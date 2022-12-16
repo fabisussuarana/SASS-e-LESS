@@ -1,0 +1,81 @@
+$background-header: #252525;
+$background-color: #fff;
+
+@mixin grid($columns, $gap) {
+    display: grid;
+    grid-template-columns: $columns;
+    gap: $gap;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2px;
+}
+
+.header {
+    background-color: $background-header;
+    color: $background-color;
+    padding: 10px 0;
+
+    .container {
+        @include flex-center;
+
+        a {
+            color: $background-color;
+            font-family: sans-serif;
+        }
+
+        > {
+            a {
+                text-decoration: none;
+                font-size: 35px;
+            }
+        }
+    
+        nav {
+            ul {
+                @include flex-center;
+    
+                li {
+                    list-style: none;
+                }
+
+                li + li {
+                    margin-left: 20px;
+                }
+
+                a {
+                    padding: 10px;
+                    display: block;
+                    text-decoration: none;
+                    text-transform: uppercase;
+
+                    &:hover {
+                        background-color: rgb(74, 74, 74);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main {
+    margin-top: 60px;
+    
+    .content {
+        @include grid(1fr 1fr, 10px);
+    }
+}
